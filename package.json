@@ -76,15 +76,18 @@
 		"lint:fix": "prettier --write . && eslint --fix ."
 	},
 	"peerDependencies": {
+		"@fortawesome/fontawesome-free": "^7.0.0",
 		"svelte": "^5.0.0",
 		"tailwindcss": "^4.0.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.39.1",
-		"@sveltejs/adapter-static": "^4.0.0",
+		"@fortawesome/fontawesome-free": "^7.2.0",
+		"@sveltejs/adapter-static": "^3.0.10",
 		"@sveltejs/kit": "^2.49.1",
 		"@sveltejs/package": "^2.5.7",
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@tailwindcss/vite": "^4.1.17",
 		"@testing-library/svelte": "^5.2.9",
 		"@types/node": "^22.19.1",
 		"eslint": "^9.39.1",
@@ -103,8 +106,6 @@
 		"vitest": "^4.0.15"
 	},
 	"dependencies": {
-		"@fortawesome/fontawesome-free": "^7.2.0",
-		"@tailwindcss/vite": "^4.1.17",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"tailwind-merge": "^3.4.0"
@@ -128,5 +129,10 @@
 	"homepage": "https://github.com/mirabelle-labs/vital-ui#readme",
 	"bugs": {
 		"url": "https://github.com/mirabelle-labs/vital-ui/issues"
+	},
+	"peerDependenciesMeta": {
+		"@fortawesome/fontawesome-free": {
+			"optional": true
+		}
 	}
 }
