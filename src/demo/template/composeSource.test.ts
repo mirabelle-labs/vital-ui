@@ -39,13 +39,20 @@ describe('composeSource', () => {
 		);
 	});
 
-	it('wraps an import longer than 80 columns one name per line, without a trailing comma', () => {
-		const names = ['AlphaComponent', 'BravoComponent', 'CharlieComponent', 'DeltaComponent'];
+	it('fills an import longer than 80 columns, several names per line, without a trailing comma', () => {
+		const names = [
+			'AlphaComponent',
+			'BravoComponent',
+			'CharlieComponent',
+			'DeltaComponent',
+			'EchoComponent',
+			'FoxtrotComponent'
+		];
 		const table = scope({ imports: names.map((name) => named(name, '$lib')) });
 		const source = composeSource('x', new Set(names), table);
 
 		expect(source).toContain(
-			"import {\n\t\tAlphaComponent,\n\t\tBravoComponent,\n\t\tCharlieComponent,\n\t\tDeltaComponent\n\t} from '@mirabelle-labs/vital-ui';"
+			"import {\n\t\tAlphaComponent, BravoComponent, CharlieComponent, DeltaComponent,\n\t\tEchoComponent, FoxtrotComponent\n\t} from '@mirabelle-labs/vital-ui';"
 		);
 	});
 

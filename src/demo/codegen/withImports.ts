@@ -1,3 +1,4 @@
+import { formatImport } from './formatImport';
 import { PACKAGE_NAME } from './packageName';
 
 const COMPONENT_TAG = /<([A-Z][A-Za-z0-9]*)/g;
@@ -15,7 +16,7 @@ export function importLine(markup: string): string | null {
 		}
 	}
 
-	return tags.size === 0 ? null : `import { ${[...tags].join(', ')} } from '${PACKAGE_NAME}';`;
+	return tags.size === 0 ? null : formatImport([...tags], PACKAGE_NAME);
 }
 
 /** What a reader copies: the import, a blank line, the markup. */

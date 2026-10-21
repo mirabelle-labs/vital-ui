@@ -1,9 +1,6 @@
-import { PACKAGE_NAME } from '../codegen';
+import { PACKAGE_NAME, formatImport } from '../codegen';
 import { templateNewlines } from './templateNewlines';
 import type { ImportEntry, ScopeTable } from './types';
-
-/** An import longer than this is written one name per line. */
-const IMPORT_WIDTH = 80;
 
 const LIB_ALIAS = /^\$lib(?:\/(.*))?$/;
 const DEMO_ONLY = /^(?:\$demo|\.{1,2}\/|\$app\/)/;
@@ -45,20 +42,8 @@ function importStatement(module: string, entries: readonly ImportEntry[]): strin
 	if (namespace !== undefined) {
 		clauses.push(`* as ${namespace.local}`);
 	}
-	const line = (names: string) => {
-		const all = names === '' ? clauses : [...clauses, `{ ${names} }`];
 
-		return `import ${all.join(', ')} from '${module}';`;
-	};
-	const inline = line(named.map(specifierText).join(', '));
-
-	if (named.length === 0 || inline.length <= IMPORT_WIDTH) {
-		return inline;
-	}
-	const spread = named.map((entry) => `\t${specifierText(entry)}`).join(',\n');
-	const head = clauses.length > 0 ? `${clauses.join(', ')}, ` : '';
-
-	return `import ${head}{\n${spread}\n} from '${module}';`;
+	return formatImport(named.map(specifierText), module, clauses.join(', '));
 }
 
 /** One statement per module, the package first: what a reader would paste at the top. */

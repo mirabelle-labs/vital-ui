@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { generateMarkup, importLine, withImports } from './index';
+import { formatImport, generateMarkup, importLine, withImports } from './index';
 import { defineControls, startingValues } from '../controls';
 
 const controls = defineControls([
@@ -72,6 +72,31 @@ describe('generateMarkup', () => {
 });
 
 describe('imports', () => {
+	it('fills a long import with several names per line', () => {
+		const names = ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf', 'Hotel'].map(
+			(name) => `${name}Component`
+		);
+
+		expect(formatImport(names, 'pkg')).toBe(
+			"import {\n\tAlphaComponent, BravoComponent, CharlieComponent, DeltaComponent,\n\tEchoComponent, FoxtrotComponent, GolfComponent, HotelComponent\n} from 'pkg';"
+		);
+	});
+
+	it('keeps a short import on one line, with its default clause first', () => {
+		expect(formatImport(['A', 'B'], 'pkg')).toBe("import { A, B } from 'pkg';");
+		expect(formatImport(['A'], 'pkg', 'Main')).toBe("import Main, { A } from 'pkg';");
+		expect(formatImport([], 'pkg', 'Main')).toBe("import Main from 'pkg';");
+	});
+
+	it('wraps the import above a long list of components', () => {
+		const tags = ['Button', 'Card', 'CardBar', 'CardBody', 'FlexCol', 'Grid', 'Icon', 'IconBlock'];
+		const markup = [...tags, 'Result', 'SearchInput', 'Spacer', 'Table'].map((t) => `<${t} />`);
+
+		expect(importLine(markup.join(''))).toBe(
+			"import {\n\tButton, Card, CardBar, CardBody, FlexCol, Grid, Icon, IconBlock, Result,\n\tSearchInput, Spacer, Table\n} from '@mirabelle-labs/vital-ui';"
+		);
+	});
+
 	it('lists each component once, in order of appearance', () => {
 		expect(importLine('<Card><CardBody /><Card /></Card>')).toBe(
 			"import { Card, CardBody } from '@mirabelle-labs/vital-ui';"
