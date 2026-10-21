@@ -129,18 +129,7 @@ Load the design system once, after Tailwind:
 
 ```svelte
 <script lang="ts">
-	import {
-		Button,
-		Card,
-		CardBody,
-		Field,
-		Input,
-		Tabs,
-		TabList,
-		Tab,
-		TabPanel
-	} from '@mirabelle-labs/vital-ui';
-	let tab = $state('overview');
+	import { Button, Card, CardBody, Field, Input } from '@mirabelle-labs/vital-ui';
 </script>
 
 <Card>
@@ -151,15 +140,6 @@ Load the design system once, after Tailwind:
 		<Button variant="primary" size="lg">Save</Button>
 	</CardBody>
 </Card>
-
-<Tabs bind:value={tab}>
-	<TabList>
-		<Tab value="overview">Overview</Tab>
-		<Tab value="activity">Activity</Tab>
-	</TabList>
-	<TabPanel value="overview">…</TabPanel>
-	<TabPanel value="activity">…</TabPanel>
-</Tabs>
 ```
 
 A few conventions worth knowing before you start:
@@ -270,16 +250,8 @@ Rune helpers return objects with accessors: read `view.visible`, bind `view.quer
 
 ```svelte
 <script lang="ts">
-	import {
-		SearchInput,
-		GroupChips,
-		Pagination,
-		Drawer,
-		Field,
-		Input,
-		Button,
-		toast
-	} from '@mirabelle-labs/vital-ui';
+	import { SearchInput, GroupChips, Pagination, Tr } from '@mirabelle-labs/vital-ui';
+	import { Drawer, Field, Input, Button, toast } from '@mirabelle-labs/vital-ui';
 	import { createListView, createOverlay, createForm } from '@mirabelle-labs/vital-ui/state';
 	import { validateWith, required, email } from '@mirabelle-labs/vital-ui/validation';
 	import { USERS, type User } from './data';
