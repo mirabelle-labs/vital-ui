@@ -100,9 +100,9 @@ export const bannerIconVariants = cva('shrink-0', {
 	defaultVariants: { size: 'md' }
 });
 
-/** A link or button in the action slot takes the bar's own text colour. */
+/** A link in the action slot (an anchor or a link-variant button) takes the bar's own text colour; a filled button keeps its look. */
 export const bannerActionVariants = cva(
-	'shrink-0 [&_a]:text-current [&_button]:text-current [&_a]:underline [&_button]:underline'
+	'shrink-0 [&_a]:text-current [&_a]:underline [&_.text-link]:text-current [&_.text-link]:underline'
 );
 
 /** Banners sit on a filled background, so the close button tints its own text. */
