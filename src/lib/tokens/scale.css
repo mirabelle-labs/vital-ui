@@ -1,0 +1,64 @@
+@theme {
+	/* -- Named scale -- the bar for every spacing value that has a token.
+     When a named token matches the pixel value exactly, the named token is
+     the only correct spelling: `gap-4xs`, never `gap-0.5`; `px-sm`, never
+     `px-3.5`. A bare numeric step (gap-3, p-5) is correct only when no
+     token matches it -- see CLAUDE.md §3 for the table.
+
+     Two exemptions stay numeric, because a named token would misdescribe
+     them: stroke widths (`w-0.5`, `h-0.5`, `after:h-0.5` -- `--spacing-4xs`
+     names a spacing step, not a line thickness) and sub-pixel geometry. -- */
+
+	/* Spacing (usable as p-*, m-*, gap-*, size-*, w-*, h-*) */
+	--spacing-4xs: 2px;
+	--spacing-3xs: 4px;
+	--spacing-2xs: 8px;
+	--spacing-xs: 12px;
+	--spacing-sm: 14px;
+	--spacing-md: 16px;
+	--spacing-lg: 20px;
+	--spacing-xl: 24px;
+	--spacing-2xl: 28px;
+	--spacing-3xl: 32px;
+	--spacing-4xl: 48px;
+
+	/* Shared control heights (Input, Select, Button, SearchInput...):
+     h-control-xs = h-8, h-control-sm = h-9, h-control-md = h-10,
+     h-control-lg = h-12, h-control-xl = h-14. Every interactive control
+     picks one of these so `data-density="compact"` shortens them all. */
+	--spacing-control-xs: 32px;
+	--spacing-control-sm: 36px;
+	--spacing-control-md: 40px;
+	--spacing-control-lg: 48px;
+	--spacing-control-xl: 56px;
+
+	/* Typography additions (text-sm/lg/xl keep Tailwind values -- the kit is designed on them) */
+	--text-2xs: 10px;
+	--text-2xs--line-height: 14px;
+	--text-md: 16px;
+	--text-md--line-height: 24px;
+
+	/* Radius addition (other v1 radius names collide with Tailwind defaults -- not imported) */
+	--radius-2xs: 2px;
+}
+
+/* -- Container widths --
+   Tailwind resolves `max-w-sm|md|lg|xl|2xl…` against --spacing-* BEFORE
+   --container-*, so with the named spacing scale above `max-w-md` would
+   mean 16px. Use `max-w-container-<size>` for readable measures:
+   xs 20rem · sm 24rem · md 28rem · lg 32rem · xl 36rem · 2xl 42rem ·
+   3xl 48rem · 4xl 56rem · 5xl 64rem · 6xl 72rem · 7xl 80rem */
+@utility max-w-container-* {
+	max-width: --value(--container-*);
+}
+
+/* -- Density --
+   `data-density="compact"` on any root tightens the interactive controls
+   (dense consoles, data tables) without touching a single component. */
+[data-density='compact'] {
+	--spacing-control-xs: 28px;
+	--spacing-control-sm: 32px;
+	--spacing-control-md: 36px;
+	--spacing-control-lg: 40px;
+	--spacing-control-xl: 48px;
+}

@@ -1,0 +1,22 @@
+/* ============================================================
+   Radius
+   Four roles instead of picking rounded-md / lg / xl by eye.
+   A component says what it is; the value is decided once here.
+   ============================================================ */
+
+@theme {
+	/* Badges, menu rows, table cells — anything inline. */
+	--radius-inline: 6px;
+
+	/* Buttons, inputs, selects — anything you click or type in. */
+	--radius-control: 8px;
+
+	/* Cards, panels, tiles. */
+	--radius-surface: 12px;
+
+	/* Dialogs, drawers, the command palette. */
+	--radius-overlay: 16px;
+
+	/* Pills, avatars, dots. `rounded-full` stays valid for those too. */
+	--radius-pill: 9999px;
+}

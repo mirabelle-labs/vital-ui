@@ -1,0 +1,2 @@
+/* Dark mode is attribute-driven (data-theme="dark"), not media-query-driven. */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));

@@ -1,0 +1,33 @@
+/* ============================================================
+   Layers
+   Stacking is a system decision, not a per-component guess.
+   Six steps, far enough apart to insert one later.
+   ============================================================ */
+
+@theme {
+	--layer-raised: 10; /* something lifted inside its own container */
+	--layer-nav: 30; /* sticky navbar, sidebar, table headers */
+	--layer-dropdown: 40; /* menus, popovers, selects, tooltips */
+	--layer-overlay: 50; /* dialogs, drawers, their backdrop */
+	--layer-toast: 60; /* toasts, always above everything */
+}
+
+@utility z-raised {
+	z-index: var(--layer-raised);
+}
+
+@utility z-nav {
+	z-index: var(--layer-nav);
+}
+
+@utility z-dropdown {
+	z-index: var(--layer-dropdown);
+}
+
+@utility z-overlay {
+	z-index: var(--layer-overlay);
+}
+
+@utility z-toast {
+	z-index: var(--layer-toast);
+}

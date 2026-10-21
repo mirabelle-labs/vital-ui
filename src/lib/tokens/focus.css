@@ -1,0 +1,84 @@
+/* ============================================================
+   Focus
+   One ring for the whole kit: same colour, same width, same
+   offset, wherever the keyboard lands. `focus-ring` for a ring
+   around the element, `focus-ring-inset` when it would be
+   clipped by an ancestor (table cells, list rows, menu items).
+   ============================================================ */
+
+@theme {
+	--color-focus-ring: var(--color-primary-500);
+	--focus-ring-width: 2px;
+	--focus-ring-offset: 2px;
+}
+
+@utility focus-ring {
+	&:focus-visible {
+		outline: var(--focus-ring-width) solid var(--color-focus-ring);
+		outline-offset: var(--focus-ring-offset);
+	}
+}
+
+@utility focus-ring-inset {
+	&:focus-visible {
+		outline: var(--focus-ring-width) solid var(--color-focus-ring);
+		outline-offset: calc(var(--focus-ring-offset) * -1);
+	}
+}
+
+/** For a wrapper that should show the ring when a child is focused. */
+@utility focus-ring-within {
+	&:has(:focus-visible) {
+		outline: var(--focus-ring-width) solid var(--color-focus-ring);
+		outline-offset: var(--focus-ring-offset);
+	}
+}
+
+/** For a control whose visible part is a sibling of the real input (Switch, Radio, Checkbox). */
+@utility peer-focus-ring {
+	.peer:focus-visible ~ & {
+		outline: var(--focus-ring-width) solid var(--color-focus-ring);
+		outline-offset: var(--focus-ring-offset);
+	}
+}
+
+/* ------------------------------------------------------------
+   Fields
+   A bordered control (Input, Textarea, Select, SearchInput,
+   Combobox, MultiSelect, ChipsInput, InputOTP) marks focus by
+   colouring its own border and adding a soft halo, rather than by
+   an offset outline that would double the box. One declaration,
+   one look — `focus-field` on the control, `focus-field-within`
+   on a wrapper whose real input is a child, and
+   `focus-field-invalid` when the field is in error.
+   ------------------------------------------------------------ */
+
+@utility focus-field {
+	&:focus-visible {
+		outline: none;
+		border-color: var(--color-primary-500);
+		box-shadow: 0 0 0 3px --alpha(var(--color-primary-500) / 20%);
+	}
+}
+
+@utility focus-field-invalid {
+	&:focus-visible {
+		outline: none;
+		border-color: var(--color-danger-500);
+		box-shadow: 0 0 0 3px --alpha(var(--color-danger-500) / 20%);
+	}
+}
+
+@utility focus-field-within {
+	&:has(:focus-visible) {
+		border-color: var(--color-primary-500);
+		box-shadow: 0 0 0 3px --alpha(var(--color-primary-500) / 20%);
+	}
+}
+
+@utility focus-field-within-invalid {
+	&:has(:focus-visible) {
+		border-color: var(--color-danger-500);
+		box-shadow: 0 0 0 3px --alpha(var(--color-danger-500) / 20%);
+	}
+}

@@ -1,0 +1,21 @@
+/* ============================================================
+   Vital UI - Tailwind v4 theme (token-first)
+   Split by concern; import this file once from app.css after
+   `@import "tailwindcss"`.
+   Fonts: Inter (400-800), JetBrains Mono (400-600), Caveat (600).
+   Dark mode: set data-theme="dark" on <html> or any subtree root.
+   ============================================================ */
+
+@import './variants.css';
+@import './fonts.css';
+@import './scale.css';
+@import './palette.css';
+@import './semantic.css';
+@import './base.css';
+@import './radius.css';
+@import './layers.css';
+@import './motion.css';
+@import './focus.css';
+@import './elevation.css';
+@import './code.css';
+@import './scrollbar.css';

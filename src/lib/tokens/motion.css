@@ -1,0 +1,50 @@
+/* ============================================================
+   Motion
+   Three durations and two curves, so timing is consistent and
+   tunable in one place — and switched off entirely for anyone
+   who asked their system for less movement.
+   ============================================================ */
+
+@theme {
+	--duration-fast: 120ms; /* hover, focus, colour changes */
+	--duration-base: 180ms; /* menus, popovers, tabs */
+	--duration-slow: 320ms; /* drawers, dialogs, page-level moves */
+
+	--ease-standard: cubic-bezier(0.2, 0, 0.2, 1); /* most transitions */
+	--ease-out: cubic-bezier(0, 0, 0.2, 1); /* things entering */
+	--ease-in: cubic-bezier(0.4, 0, 1, 1); /* things leaving */
+
+	/* Every bare `transition-*` picks these up, so a component rarely needs a duration class. */
+	--default-transition-duration: var(--duration-fast);
+	--default-transition-timing-function: var(--ease-standard);
+}
+
+@utility duration-fast {
+	transition-duration: var(--duration-fast);
+}
+
+@utility duration-base {
+	transition-duration: var(--duration-base);
+}
+
+@utility duration-slow {
+	transition-duration: var(--duration-slow);
+}
+
+@utility ease-standard {
+	transition-timing-function: var(--ease-standard);
+}
+
+@layer base {
+	/* Respect the system preference: keep state changes, drop the movement. */
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+	}
+}

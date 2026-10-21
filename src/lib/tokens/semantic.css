@@ -1,0 +1,144 @@
+/* ============================================================
+   Semantic colours
+   Three layers, in order:
+     1. surfaces / text / lines — what a page is made of
+     2. interaction states      — hover, pressed, track, backdrop
+     3. soft tones              — the one tinted recipe per colour
+   Every token is redefined under [data-theme=dark], so a
+   component writes ONE class and both themes are covered.
+   ============================================================ */
+
+@theme {
+	/* -- 1. Surfaces, text, lines -- */
+	--color-page: rgb(243 244 246);
+	--color-canvas: rgb(243 244 246);
+	--color-surface: rgb(255 255 255);
+	--color-surface-2: rgb(249 250 251);
+	--color-fg: rgb(31 41 55);
+	--color-fg-muted: rgb(75 85 99);
+	--color-fg-subtle: rgb(107 114 128);
+	--color-fg-disabled: rgb(156 163 175);
+	--color-line: rgb(229 231 235);
+	--color-line-strong: rgb(209 213 219);
+	--color-link: rgb(70 84 200);
+	--color-primary-fg: rgb(70 84 200);
+	--color-field-line: rgb(209 213 219);
+	--color-selection: rgb(85 102 237 / 0.22);
+
+	/* -- 2. Interaction states --
+     `surface-hover` is THE hover fill of the kit: menu rows, list rows,
+     table rows, nav items, ghost buttons. `surface-active` is one step
+     further (pressed, tertiary hover). `track` is the groove of a
+     progress bar, a slider or a segmented control. */
+	--color-surface-hover: rgb(243 244 246);
+	--color-surface-active: rgb(229 231 235);
+	--color-track: rgb(229 231 235);
+
+	/* The scrim behind a dialog, drawer or palette — identical in both themes. */
+	--color-backdrop: rgb(3 7 18 / 0.4);
+
+	/* A chip that flips against the page: tooltips, value bubbles. */
+	--color-inverse: rgb(17 24 39);
+	--color-inverse-fg: rgb(255 255 255);
+
+	/* Always-dark chrome: code windows, dark sections, solid neutral banners. */
+	--color-night: rgb(9 11 20);
+
+	/* -- 3. Soft tones --
+     One recipe per colour, four roles: the fill, its hover, its border
+     and the text on it. Everything tinted uses these — Badge subtle,
+     Tag, Button secondary, Alert, Callout, Toast, Timeline, IconBlock,
+     EmptyState, selected rows and options. The shade behind each token
+     differs per hue on purpose: amber and sky read paler than indigo at
+     the same step, so they start one step lower. */
+	--color-primary-soft: rgb(220 224 251);
+	--color-primary-soft-hover: rgb(196 202 250);
+	--color-primary-soft-line: rgb(171 180 248);
+	--color-primary-soft-fg: rgb(55 67 160);
+
+	--color-success-soft: rgb(220 252 231);
+	--color-success-soft-hover: rgb(187 247 208);
+	--color-success-soft-line: rgb(134 239 172);
+	--color-success-soft-fg: rgb(21 128 61);
+
+	--color-warning-soft: rgb(254 243 199);
+	--color-warning-soft-hover: rgb(253 230 138);
+	--color-warning-soft-line: rgb(252 211 77);
+	--color-warning-soft-fg: rgb(180 83 9);
+
+	--color-danger-soft: rgb(254 226 226);
+	--color-danger-soft-hover: rgb(254 202 202);
+	--color-danger-soft-line: rgb(252 165 165);
+	--color-danger-soft-fg: rgb(185 28 28);
+
+	--color-info-soft: rgb(224 242 254);
+	--color-info-soft-hover: rgb(186 230 253);
+	--color-info-soft-line: rgb(125 211 252);
+	--color-info-soft-fg: rgb(3 105 161);
+
+	--color-neutral-soft: rgb(243 244 246);
+	--color-neutral-soft-hover: rgb(229 231 235);
+	--color-neutral-soft-line: rgb(209 213 219);
+	--color-neutral-soft-fg: rgb(75 85 99);
+}
+
+[data-theme='dark'] {
+	/* -- 1. Surfaces, text, lines -- */
+	--color-page: rgb(13 15 26);
+	--color-canvas: rgb(13 15 26);
+	--color-surface: rgb(21 24 38);
+	--color-surface-2: rgb(28 32 49);
+	--color-fg: rgb(236 238 248);
+	--color-fg-muted: rgb(176 182 205);
+	--color-fg-subtle: rgb(133 140 168);
+	--color-fg-disabled: rgb(84 91 118);
+	--color-line: rgb(33 37 56);
+	--color-line-strong: rgb(62 69 98);
+	--color-link: rgb(165 180 252);
+	--color-primary-fg: rgb(142 155 245);
+	--color-field-line: rgb(71 75 88);
+	--color-selection: rgb(110 125 241 / 0.4);
+
+	/* -- 2. Interaction states -- */
+	--color-surface-hover: rgb(34 39 59);
+	--color-surface-active: rgb(43 49 73);
+	--color-track: rgb(38 43 64);
+
+	--color-backdrop: rgb(5 6 14 / 0.65);
+
+	--color-inverse: rgb(236 238 248);
+	--color-inverse-fg: rgb(13 15 26);
+
+	/* -- 3. Soft tones --
+     A dark tint is an alpha of the -500 hue rather than a -900 mix:
+     it keeps its colour on surface, surface-2 and page alike. */
+	--color-primary-soft: rgb(85 102 237 / 0.16);
+	--color-primary-soft-hover: rgb(85 102 237 / 0.26);
+	--color-primary-soft-line: rgb(85 102 237 / 0.34);
+	--color-primary-soft-fg: rgb(142 155 245);
+
+	--color-success-soft: rgb(34 197 94 / 0.16);
+	--color-success-soft-hover: rgb(34 197 94 / 0.26);
+	--color-success-soft-line: rgb(34 197 94 / 0.34);
+	--color-success-soft-fg: rgb(74 222 128);
+
+	--color-warning-soft: rgb(245 158 11 / 0.16);
+	--color-warning-soft-hover: rgb(245 158 11 / 0.26);
+	--color-warning-soft-line: rgb(245 158 11 / 0.34);
+	--color-warning-soft-fg: rgb(252 211 77);
+
+	--color-danger-soft: rgb(239 68 68 / 0.16);
+	--color-danger-soft-hover: rgb(239 68 68 / 0.26);
+	--color-danger-soft-line: rgb(239 68 68 / 0.34);
+	--color-danger-soft-fg: rgb(252 165 165);
+
+	--color-info-soft: rgb(14 165 233 / 0.16);
+	--color-info-soft-hover: rgb(14 165 233 / 0.26);
+	--color-info-soft-line: rgb(14 165 233 / 0.34);
+	--color-info-soft-fg: rgb(125 211 252);
+
+	--color-neutral-soft: rgb(34 39 59);
+	--color-neutral-soft-hover: rgb(43 49 73);
+	--color-neutral-soft-line: rgb(62 69 98);
+	--color-neutral-soft-fg: rgb(212 216 235);
+}

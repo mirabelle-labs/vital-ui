@@ -1,0 +1,46 @@
+/* ============================================================
+   Elevation
+   Five named steps instead of ad-hoc box-shadows, so a component
+   says what it is (raised, overlay, floating) rather than which
+   blur radius it wants. Utilities: shadow-raised, shadow-lifted,
+   shadow-overlay, shadow-floating, shadow-sunken.
+
+   Each step is two layers: a tight contact shadow that anchors the
+   element to the surface below, and a wide diffuse one that gives
+   it height. One layer alone reads either as a hard border or as
+   a grey smudge; the pair reads as light.
+
+   Dark mode redefines the same variables: a shadow tuned for a
+   white page is invisible on a dark one, so the dark set is
+   deeper and more opaque.
+   ============================================================ */
+
+@theme {
+	/* Cards, stat tiles, buttons — sits on the page without floating. */
+	--shadow-raised: 0 1px 2px -1px rgb(3 7 18 / 0.1), 0 1px 3px rgb(3 7 18 / 0.06);
+
+	/* Hover / drag state of something already raised. */
+	--shadow-lifted: 0 2px 4px -2px rgb(3 7 18 / 0.1), 0 10px 20px -6px rgb(3 7 18 / 0.14);
+
+	/* Menus, popovers, selects, tooltips — anchored to a trigger. */
+	/* Menus, dialogs: a top-edge hairline lifts them off the page. */
+	--shadow-overlay: 0 2px 6px -2px rgb(3 7 18 / 0.1), 0 14px 28px -8px rgb(3 7 18 / 0.16);
+
+	/* Dialogs, drawers, command palette, toasts — detached from the page. */
+	--shadow-floating: 0 4px 10px -3px rgb(3 7 18 / 0.12), 0 24px 48px -12px rgb(3 7 18 / 0.24);
+
+	/* Inset groove: progress tracks, slider rails, segmented controls. */
+	--shadow-sunken: inset 0 1px 2px rgb(3 7 18 / 0.08);
+}
+
+[data-theme='dark'] {
+	--shadow-raised: 0 1px 2px -1px rgb(2 3 10 / 0.5), 0 1px 3px rgb(2 3 10 / 0.35);
+	--shadow-lifted: 0 2px 4px -2px rgb(2 3 10 / 0.5), 0 10px 20px -6px rgb(2 3 10 / 0.55);
+	--shadow-overlay:
+		0 2px 6px -2px rgb(2 3 10 / 0.5), 0 14px 28px -8px rgb(2 3 10 / 0.6),
+		inset 0 1px 0 rgb(255 255 255 / 0.05);
+	--shadow-floating:
+		0 4px 10px -3px rgb(2 3 10 / 0.55), 0 24px 48px -12px rgb(2 3 10 / 0.7),
+		inset 0 1px 0 rgb(255 255 255 / 0.06);
+	--shadow-sunken: inset 0 1px 2px rgb(2 3 10 / 0.45);
+}

@@ -1,0 +1,62 @@
+@layer base {
+	body {
+		background: var(--color-page);
+		color: var(--color-fg);
+		font-family: var(--font-sans);
+	}
+	::selection {
+		background: var(--color-selection);
+	}
+
+	/* Tailwind v4 preflight no longer sets cursor: pointer on buttons — restore it for
+	   every interactive control, including the ones that are not a <button>: links, the
+	   label that owns a control, and the ARIA roles the kit renders on non-button
+	   elements. Anything outside this net (a clickable <tr>, an interactive Card) says
+	   so in its own cva. */
+	a[href]:not([aria-disabled='true']),
+	button:not(:disabled),
+	label[for],
+	label:has(input:not(:disabled)),
+	summary,
+	select:not(:disabled),
+	input[type='checkbox']:not(:disabled),
+	input[type='radio']:not(:disabled),
+	input[type='file']:not(:disabled),
+	[role='button']:not(:disabled),
+	[role='link']:not([aria-disabled='true']),
+	[role='tab']:not([aria-disabled='true']),
+	[role='option']:not([aria-disabled='true']),
+	[role='switch']:not([aria-disabled='true']),
+	[role='menuitem']:not([aria-disabled='true']),
+	[role='menuitemcheckbox']:not([aria-disabled='true']),
+	[role='menuitemradio']:not([aria-disabled='true']) {
+		cursor: pointer;
+	}
+
+	/* One rule for every switched-off control, so no component repeats it. The
+	   `disabled` attribute already blocks activation; what it must not do is take
+	   the cursor away, which is the only thing telling the user the control is
+	   off. Its text stops being selectable too — a control you cannot use is not
+	   a piece of copy. */
+	:disabled,
+	[aria-disabled='true'] {
+		cursor: not-allowed;
+		user-select: none;
+	}
+}
+
+/**
+ * For a control that has no `disabled` attribute of its own — a wrapper around
+ * several inputs (ChipsInput, InputOTP, QuantityInput, Slider, Datepicker), or a
+ * row that is not a button. The wrapper keeps its own pointer events so the
+ * cursor can say "not allowed"; only its children stop responding.
+ */
+@utility disabled-surface {
+	opacity: 0.5;
+	cursor: not-allowed;
+	user-select: none;
+
+	& * {
+		pointer-events: none;
+	}
+}

@@ -1,0 +1,37 @@
+/* ============================================================
+   Code colours
+   One token per highlight kind, so a code block follows the
+   theme like every other surface. The dark set is also what a
+   CodeWindow uses in light mode, since its chrome is always
+   dark — it marks its subtree with data-theme="dark".
+   ============================================================ */
+
+@theme {
+	--color-window-close: #ff5f57;
+	--color-window-minimize: #febc2e;
+	--color-window-zoom: #28c840;
+
+	--color-code-plain: rgb(31 41 55);
+	--color-code-keyword: rgb(124 58 237);
+	--color-code-string: rgb(21 128 61);
+	--color-code-number: rgb(194 65 12);
+	--color-code-comment: rgb(107 114 128);
+	--color-code-tag: rgb(70 84 200);
+	--color-code-attr: rgb(161 98 7);
+	--color-code-function: rgb(2 132 199);
+	--color-code-property: rgb(190 24 93);
+	--color-code-punctuation: rgb(107 114 128);
+}
+
+[data-theme='dark'] {
+	--color-code-plain: rgb(214 218 235);
+	--color-code-keyword: rgb(196 181 253);
+	--color-code-string: rgb(134 239 172);
+	--color-code-number: rgb(253 186 116);
+	--color-code-comment: rgb(113 121 152);
+	--color-code-tag: rgb(147 197 253);
+	--color-code-attr: rgb(253 224 71);
+	--color-code-function: rgb(125 211 252);
+	--color-code-property: rgb(244 114 182);
+	--color-code-punctuation: rgb(148 155 185);
+}
