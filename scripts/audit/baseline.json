@@ -1,0 +1,18 @@
+{
+	"control-size:inputOtpCellVariants:sm:text-size": "One-digit cells show display numerals, a step above the field body text.",
+	"control-size:inputOtpCellVariants:md:text-size": "One-digit cells show display numerals, a step above the field body text.",
+	"control-size:inputOtpCellVariants:lg:text-size": "One-digit cells show display numerals, a step above the field body text.",
+	"default:containerVariants:size": "`size` is a max width: lg (1152px) is the page container; md would be a narrow column.",
+	"default:dividerVariants:size": "`size` is a thickness: the hairline (sm) is the natural rule.",
+	"default:dividerLineVariants:size": "Same thickness scale as dividerVariants.",
+	"default:spacerVariants:size": "`auto` (fill the free space) is the point of a Spacer; the other keys are fixed gaps.",
+	"default:timelineIconVariants:color": "A timeline dot is neutral until an event earns a tone.",
+	"default:ratingFillVariants:color": "Filled stars are warning-yellow by convention.",
+	"default:headingVariants:color": "Text colour defaults to neutral (fg); primary is an accent.",
+	"default:textVariants:color": "Text colour defaults to neutral (fg); primary is an accent.",
+	"axis-name:toastIconVariants:type": "`type` is the public field of a toast (toast.success�); renaming it would break callers.",
+	"axis-name:dividerVariants:spacing": "The room around the rule (margin), not a card-like padding.",
+	"axis-name:toasterVariants:position": "A corner of the screen, not a placement against an anchor.",
+	"colour:buttonVariants:variant:secondary": "`secondary` is the soft tint of primary, not the secondary palette; the name is the kit API.",
+	"colour:iconButtonVariants:variant:secondary": "Same as Button: secondary is the soft primary tint."
+}
