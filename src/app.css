@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+
+/* Font Awesome (used by the Icon component) */
+@import '@fortawesome/fontawesome-free/css/all.css';
+
+/* Vital UI design tokens (theme split by concern) */
+@import './lib/tokens/index.css';

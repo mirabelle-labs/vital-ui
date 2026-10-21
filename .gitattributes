@@ -1,0 +1,19 @@
+# Repository content is always LF, and so is the working tree on every OS.
+# This overrides a local core.autocrlf=true, which would otherwise check out
+# CRLF on Windows and make line endings differ from machine to machine.
+* text=auto eol=lf
+
+# Binaries: never convert, never diff as text.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.webp  binary
+*.avif  binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.eot   binary
+*.pdf   binary

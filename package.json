@@ -1,0 +1,132 @@
+{
+	"name": "@mirabelle-labs/vital-ui",
+	"version": "0.1.0",
+	"packageManager": "pnpm@10.33.0",
+	"description": "Svelte 5 + Tailwind 4 UI component library",
+	"type": "module",
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js",
+			"default": "./dist/index.js"
+		},
+		"./styles": "./dist/styles.css",
+		"./state": {
+			"types": "./dist/state/index.d.ts",
+			"svelte": "./dist/state/index.js",
+			"default": "./dist/state/index.js"
+		},
+		"./code": {
+			"types": "./dist/code/index.d.ts",
+			"svelte": "./dist/code/index.js",
+			"default": "./dist/code/index.js"
+		},
+		"./validation": {
+			"types": "./dist/validation/index.d.ts",
+			"svelte": "./dist/validation/index.js",
+			"default": "./dist/validation/index.js"
+		},
+		"./format": {
+			"types": "./dist/format/index.d.ts",
+			"svelte": "./dist/format/index.js",
+			"default": "./dist/format/index.js"
+		},
+		"./data": {
+			"types": "./dist/data/index.d.ts",
+			"svelte": "./dist/data/index.js",
+			"default": "./dist/data/index.js"
+		},
+		"./timing": {
+			"types": "./dist/timing/index.d.ts",
+			"svelte": "./dist/timing/index.js",
+			"default": "./dist/timing/index.js"
+		},
+		"./utils": {
+			"types": "./dist/utils/index.d.ts",
+			"svelte": "./dist/utils/index.js",
+			"default": "./dist/utils/index.js"
+		},
+		"./components/*": {
+			"types": "./dist/components/*/index.d.ts",
+			"svelte": "./dist/components/*/index.js",
+			"default": "./dist/components/*/index.js"
+		}
+	},
+	"files": [
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/README.md"
+	],
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"package": "svelte-kit sync && svelte-package",
+		"prepublishOnly": "npm run package",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write .",
+		"test": "vitest",
+		"test:run": "vitest run",
+		"test:coverage": "vitest run --coverage",
+		"audit:variants": "node scripts/audit/index.ts",
+		"lint:fix": "prettier --write . && eslint --fix ."
+	},
+	"peerDependencies": {
+		"svelte": "^5.0.0",
+		"tailwindcss": "^4.0.0"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.39.1",
+		"@sveltejs/adapter-static": "^4.0.0",
+		"@sveltejs/kit": "^2.49.1",
+		"@sveltejs/package": "^2.5.7",
+		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@testing-library/svelte": "^5.2.9",
+		"@types/node": "^22.19.1",
+		"eslint": "^9.39.1",
+		"eslint-plugin-svelte": "^3.13.0",
+		"globals": "^16.5.0",
+		"jsdom": "^27.2.0",
+		"prettier": "^3.7.4",
+		"prettier-plugin-svelte": "^3.4.0",
+		"publint": "^0.3.15",
+		"svelte": "^5.45.5",
+		"svelte-check": "^4.3.4",
+		"tailwindcss": "^4.1.17",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.48.1",
+		"vite": "7.2.6",
+		"vitest": "^4.0.15"
+	},
+	"dependencies": {
+		"@fortawesome/fontawesome-free": "^7.2.0",
+		"@tailwindcss/vite": "^4.1.17",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"tailwind-merge": "^3.4.0"
+	},
+	"keywords": [
+		"svelte",
+		"svelte5",
+		"tailwind",
+		"ui",
+		"components",
+		"library"
+	],
+	"license": "MIT",
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mirabelle-labs/vital-ui.git"
+	},
+	"homepage": "https://github.com/mirabelle-labs/vital-ui#readme",
+	"bugs": {
+		"url": "https://github.com/mirabelle-labs/vital-ui/issues"
+	}
+}
