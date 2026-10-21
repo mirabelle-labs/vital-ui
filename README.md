@@ -19,6 +19,8 @@
 ![SSR](https://img.shields.io/badge/SSR-safe-1C2231)
 ![License](https://img.shields.io/badge/license-MIT-22C55E)
 
+[**Live demo**](https://vital-ui.matteow.com) · [npm](https://www.npmjs.com/package/@mirabelle-labs/vital-ui) · [Components](#components) · [Design tokens](#design-tokens) · [Helpers](#helpers)
+
 <br />
 
 <table>
@@ -40,7 +42,7 @@ Most component libraries give you a finished look and a pile of overrides. Vital
 - **The parent composes the children.** No `<Menu items={…}>` with a config object: you assemble `Menu` + `MenuItem`, `Card` + `CardHeader` / `CardBody` / `CardFooter`, `Tabs` + `TabList` / `Tab` / `TabPanel`.
 - **Every visual axis is a typed variant.** One `variants.ts` per family owns all styling and every default (`class-variance-authority`); every `*Variants` object is exported so you can reuse a recipe outside the component.
 - **Two themes, one class.** Each semantic token is redefined under `[data-theme='dark']`, so a component writes one class and both themes are covered.
-- **No CSS files, no icon dependency.** Tailwind utilities only; icons are passed in by the parent.
+- **No CSS files to write.** Tailwind utilities only. Components never import an icon: the parent passes it in, and `<Icon>` renders Font Awesome glyphs if you add that stylesheet.
 - **The logic around the UI is included.** Typed, tested helpers for lists, forms, overlays, async actions, formatting and validation, on their own entry points so a Button never pulls them in.
 
 ## Contents
@@ -57,6 +59,7 @@ Most component libraries give you a finished look and a pile of overrides. Vital
 - [Development](#development)
 - [Quality gates](#quality-gates)
 - [Working with Claude Code](#working-with-claude-code)
+- [License](#license)
 
 ## Screens
 
@@ -86,7 +89,7 @@ Each component has a preview canvas, a props panel generated from its variants, 
 
 ### Real pages
 
-Four complete pages, plus a multi-page editorial site, prove the kit survives dense, stateful screens.
+Four complete pages prove the kit survives dense, stateful screens.
 
 | Client portal                                                                     | SaaS landing                                                                    |
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
@@ -109,7 +112,7 @@ Four complete pages, plus a multi-page editorial site, prove the kit survives de
 pnpm add @mirabelle-labs/vital-ui
 ```
 
-Peer dependencies: `svelte@^5` and `tailwindcss@^4`. The kit itself depends on `class-variance-authority`, `clsx` and `tailwind-merge`.
+Peer dependencies: `svelte@^5` and `tailwindcss@^4`. The kit itself depends on `class-variance-authority`, `clsx` and `tailwind-merge`. `<Icon>` needs Font Awesome in your own app (`pnpm add @fortawesome/fontawesome-free`); skip it if you never use `<Icon>`.
 
 Load the design system once, after Tailwind:
 
@@ -340,15 +343,15 @@ pnpm install
 pnpm dev        # http://localhost:5173
 ```
 
-| Route                          | What you get                                                                                                         |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| `/`                            | the presentation page, built only from library components                                                            |
-| `/demo`                        | the 15 categories                                                                                                    |
-| `/demo/<category>`             | a gallery of the category's families                                                                                 |
-| `/demo/<category>/<component>` | the playground: preview, props panel, generated markup and imports                                                   |
-| `/demo/tokens`                 | every design token, read from the stylesheets                                                                        |
-| `/demo/helpers`                | every helper, live                                                                                                   |
-| `/demo/pages`                  | complete pages: SaaS landing, shop with checkout, client portal, Kubernetes console, and a multi-page editorial site |
+| Route                          | What you get                                                                        |
+| ------------------------------ | ----------------------------------------------------------------------------------- |
+| `/`                            | the presentation page, built only from library components                           |
+| `/demo`                        | the 15 categories                                                                   |
+| `/demo/<category>`             | a gallery of the category's families                                                |
+| `/demo/<category>/<component>` | the playground: preview, props panel, generated markup and imports                  |
+| `/demo/tokens`                 | every design token, read from the stylesheets                                       |
+| `/demo/helpers`                | every helper, live                                                                  |
+| `/demo/pages`                  | complete pages: SaaS landing, shop with checkout, client portal, Kubernetes console |
 
 `⌘K` opens a palette to jump anywhere. The demo's own code lives in `src/demo` (alias `$demo`), outside `src/lib`, so it is never published. Demo code is derived, not written: a build step walks each demo's markup and prints the imports and script under the preview.
 
@@ -404,4 +407,4 @@ The repository carries its own working agreement for Claude Code: [`CLAUDE.md`](
 
 ## License
 
-MIT
+[MIT](LICENSE) © 2026 Matteow
