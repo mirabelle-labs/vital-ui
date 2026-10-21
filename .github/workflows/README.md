@@ -1,11 +1,11 @@
-# .github
+# Workflows
 
-Automation for the repository.
+Automation for the repository. This README lives here, not in `.github/`, because GitHub shows `.github/README.md` instead of the root one.
 
-| Workflow                               | Runs on                  | Does                                                                                                                                                      |
-| -------------------------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`ci.yml`](workflows/ci.yml)           | push to `main`, every PR | `check`, `lint`, `test:run`, `audit:variants`, `package`, `publint`, `build`. On `main` it then deploys the demo site.                                    |
-| [`release.yml`](workflows/release.yml) | a `vX.Y.Z` tag           | checks the tag matches `package.json`, runs the gates, publishes `@mirabelle-labs/vital-ui` to npm with provenance, through trusted publishing (no token) |
+| Workflow                     | Runs on                  | Does                                                                                                                                                      |
+| ---------------------------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`ci.yml`](ci.yml)           | push to `main`, every PR | `check`, `lint`, `test:run`, `audit:variants`, `package`, `publint`, `build`. On `main` it then deploys the demo site.                                    |
+| [`release.yml`](release.yml) | a `vX.Y.Z` tag           | checks the tag matches `package.json`, runs the gates, publishes `@mirabelle-labs/vital-ui` to npm with provenance, through trusted publishing (no token) |
 
 ## Secrets
 
